@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title contenteditable>Hey, buddy!</title>
+  <style class="default">
+
+    * {
+      transition: all .5s ease;
+    }
+
+    head, [contenteditable] { 
+      display: block;
+    }
+
+    style.default,
+    script.default {
+      display: none;
+    }
+
+    style, script {
+      font-family: Consolas, monospace;
+
+      white-space: pre-wrap;       /* css-3 */
+      white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+      white-space: -pre-wrap;      /* Opera 4-6 */
+      white-space: -o-pre-wrap;    /* Opera 7 */
+      word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+      padding: 10px 20px;    
+    }
+
+    style:before {
+      content: 'CSS';
+      color: red;
+    }
+
+    script:before {
+      content: 'JavaScript';
+      color: purple;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="content">
+
+  <h1 contenteditable><em>Everything</em> is <strong>editable</strong> in this page.</h1>
+  <h2 contenteditable>Have fun!</h2>
+  
+</div>
+
+<style contenteditable>
+
+html {
+  font: 16px Helvetica, Arial, sans-serif;
+  margin: 10%;
+}
+
+body {
+  background: #FDF6E3;
+  color: #586E75;
+}
+
+title {
+  font-size: 8em;
+  color: #B58900;
+  word-wrap:  break-word;
+}
+
+style, script {
+  background: #EEE8D5;
+  border-top: 1px solid #93A1A1;
+}
+
+</style>
+
+<script id="js" contenteditable>
+
+function createParagraph(text) {
+  var p = document.createElement('p');
+  p.innerHTML = text;
+  p.setAttribute('contenteditable', 'true');
+  var content = document.getElementById('content');  
+  content.appendChild(p);
+}
+
+createParagraph("Hey there, I'm the new paragraph");
+</script>
+
+<script class="default">
+
+  var timer,
+      js = document.getElementById('js'),
+      delay = 2000;
+
+  js.onkeyup = function(event) {
+
+    if (typeof timer != "undefined") {
+
+      clearTimeout(timer);
+      timer = 0;
+    }
+
+    timer = setTimeout(executeCode, delay);
+  };
+
+ function executeCode() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.innerHTML = js.innerHTML;
+    js.parentNode.insertBefore(script, js);
+  }
+
+</script>
+
+</body>
+</html>
