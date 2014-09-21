@@ -9,7 +9,7 @@
       transition: all .5s ease;
     }
 
-    head, [contenteditable] { 
+    head, [contenteditable] {
       display: block;
     }
 
@@ -27,7 +27,7 @@
       white-space: -o-pre-wrap;    /* Opera 7 */
       word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
-      padding: 10px 20px;    
+      padding: 10px 20px;
     }
 
     style:before {
@@ -48,7 +48,7 @@
 
   <h1 contenteditable><em>Everything</em> is <strong>editable</strong> in this page.</h1>
   <h2 contenteditable>Have fun!</h2>
-  
+
 </div>
 
 <style contenteditable>
@@ -82,7 +82,7 @@ function createParagraph(text) {
   var p = document.createElement('p');
   p.innerHTML = text;
   p.setAttribute('contenteditable', 'true');
-  var content = document.getElementById('content');  
+  var content = document.getElementById('content');
   content.appendChild(p);
 }
 
